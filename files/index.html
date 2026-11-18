@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loom &amp; Line – Everyday clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="announcement"><span>Thoughtfully made, made to be worn.</span><span>Free shipping on orders over ₹1,999 <span aria-hidden="true">→</span></span></div>
+<header class="top">
+  <a class="logo" href="#" id="logo"><span class="logo-mark" aria-hidden="true">L</span><span>Loom <i>&amp;</i> Line<small>EVERYDAY, ELEVATED</small></span></a>
+  <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search your next favourite" aria-label="Search products"></label>
+  <nav>
+    <a class="nav-shop" href="#shop">Shop</a>
+    <button id="ordersBtn" class="link" hidden>Orders</button>
+    <button id="authBtn" class="link">Sign in</button>
+    <button id="cartBtn" class="cartbtn"><span class="bag-icon" aria-hidden="true">▱</span> Bag <span id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span></span> MADE FOR THE EVERYDAY</p>
+    <h1>Good clothes.<br><em>Good days.</em></h1>
+    <p class="hero-description">Easy, considered pieces in breathable cottons, lived-in linens and denim made to go places.</p>
+    <a class="hero-cta" href="#shop">Find your everyday <span aria-hidden="true">↗</span></a>
+    <div class="hero-note"><span class="note-stars" aria-label="Five stars">★★★★★</span><span>Loved by 2,000+ everyday dressers</span></div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="A relaxed, sunlit everyday outfit">
+    <div class="hero-sticker"><span>THE SLOW<br>SUMMER EDIT</span><span class="sticker-star" aria-hidden="true">✳</span></div>
+    <div class="hero-caption"><span>01 / 04</span><span>Natural fabrics, always.</span></div>
+  </div>
+  <div class="hero-side-note">DESIGNED IN INDIA · WORN EVERYWHERE</div>
+</section>
+
+<section class="promise-row" aria-label="Our promises">
+  <div><span class="promise-icon">✳</span><span><strong>Natural by nature</strong><small>Breathable, feel-good fabrics</small></span></div>
+  <div><span class="promise-icon">↗</span><span><strong>Made to last</strong><small>Better fits, fewer compromises</small></span></div>
+  <div><span class="promise-icon">♡</span><span><strong>A little more thoughtful</strong><small>Small batches, considered design</small></span></div>
+</section>
+
+<main id="shop">
+  <div class="toolbar">
+    <div class="shop-heading"><div><p class="eyebrow">THE GOOD STUFF</p><h2>Wear on repeat<span>.</span></h2></div><p class="product-count" id="productCount"></p></div>
+    <div class="shop-controls"><div id="cats" class="cats"></div>
+    <label class="sort-label">Sort by <select id="sort" aria-label="Sort">
+      <option value="new">Newest</option>
+      <option value="low">Price: low to high</option>
+      <option value="high">Price: high to low</option>
+    </select></label></div>
+  </div>
+  <div id="grid" class="grid"></div>
+  <section id="ordersView" hidden></section>
+</main>
+
+<footer class="footer">
+  <div class="footer-brand"><a class="logo" href="#" id="footerLogo">Loom <i>&amp;</i> Line</a><p>Everyday pieces, made with a little more thought.</p></div>
+  <p class="footer-note">Made with care in India <span>✳</span> Worn wherever you are</p>
+  <span class="copyright">© 2025 Loom &amp; Line</span>
+</footer>
+
+<!-- Product dialog -->
+<dialog id="pdp"></dialog>
+
+<!-- Auth dialog -->
+<dialog id="authDlg">
+  <form id="authForm" class="form">
+    <h2 id="authTitle">Sign in</h2>
+    <label>Email<input type="email" name="email" required autocomplete="email"></label>
+    <label>Password<input type="password" name="password" required minlength="6" autocomplete="current-password"></label>
+    <p class="err" id="authErr"></p>
+    <button class="primary">Continue</button>
+    <button type="button" class="link" id="authSwitch">New here? Create an account</button>
+    <button type="button" class="link" data-close>Cancel</button>
+  </form>
+</dialog>
+
+<!-- Cart drawer -->
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="dhead"><h2>Your bag</h2><button class="link" id="closeCart">Close</button></div>
+  <div id="cartItems"></div>
+  <form id="checkoutForm" class="form" hidden>
+    <h3>Delivery address</h3>
+    <label>Full name<input name="name" required></label>
+    <label>Phone<input name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile"></label>
+    <label>Address<textarea name="address" required rows="2"></textarea></label>
+    <div class="row"><label>City<input name="city" required></label><label>PIN code<input name="pin" required pattern="[0-9]{6}"></label></div>
+  </form>
+  <div class="dfoot">
+    <div class="total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <button class="primary" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+<div id="scrim" class="scrim"></div>
+<div id="toast" class="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
